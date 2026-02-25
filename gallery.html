@@ -672,6 +672,203 @@
     height: 50px;
   }
 }
+
+/* ========================================
+   Review Mode
+   ======================================== */
+
+/* Toggle button */
+.ig-gallery__review-toggle {
+  position: relative;
+  gap: 0.4rem;
+}
+.ig-gallery__review-toggle svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+.ig-gallery--review .ig-gallery__review-toggle {
+  background: var(--ig-accent-bg);
+  border-color: var(--ig-accent);
+  color: #fff;
+}
+
+/* Number badge (top-left of card) */
+.ig-gallery__card-number {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  pointer-events: none;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+/* Checkbox (bottom-right of card) */
+.ig-gallery__card-check {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 120ms ease, background 120ms ease, transform 100ms ease;
+}
+.ig-gallery__card-check:hover {
+  border-color: var(--ig-accent);
+  background: rgba(0, 0, 0, 0.6);
+  transform: scale(1.1);
+}
+.ig-gallery__card-check svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  transition: opacity 100ms ease;
+}
+
+/* Selected card */
+.ig-gallery__card--selected {
+  box-shadow: 0 0 0 3px var(--ig-accent), var(--ig-shadow);
+}
+.ig-gallery__card--selected .ig-gallery__card-check {
+  background: var(--ig-accent);
+  border-color: var(--ig-accent);
+}
+.ig-gallery__card--selected .ig-gallery__card-check svg {
+  opacity: 1;
+}
+
+/* Floating review bar */
+.ig-gallery__review-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #161b22;
+  border-top: 1px solid var(--ig-border-2);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  z-index: 9999;
+  transform: translateY(100%);
+  transition: transform 250ms ease;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+}
+.ig-gallery__review-bar--visible {
+  transform: translateY(0);
+}
+.ig-gallery__review-bar-count {
+  color: var(--ig-muted);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.ig-gallery__review-bar-count strong {
+  color: var(--ig-text);
+}
+.ig-gallery__review-bar-copy {
+  appearance: none;
+  border: 1px solid var(--ig-accent);
+  background: var(--ig-accent-bg);
+  color: #fff;
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: background 120ms ease, transform 100ms ease;
+}
+.ig-gallery__review-bar-copy:hover {
+  background: rgba(120, 170, 255, 0.25);
+}
+.ig-gallery__review-bar-copy:active {
+  transform: scale(0.97);
+}
+.ig-gallery__review-bar-copy svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ig-gallery__review-bar-clear {
+  appearance: none;
+  border: 1px solid var(--ig-border);
+  background: transparent;
+  color: var(--ig-muted);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.75rem;
+  font-family: inherit;
+  transition: color 120ms ease, border-color 120ms ease;
+}
+.ig-gallery__review-bar-clear:hover {
+  color: var(--ig-text);
+  border-color: var(--ig-border-2);
+}
+
+/* Toast notification */
+.ig-gallery__toast {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #1c8a4e;
+  color: #fff;
+  padding: 0.625rem 1.25rem;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 200ms ease, transform 200ms ease;
+  z-index: 10000;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.ig-gallery__toast--show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
 </style>
 
 <section class="ig-gallery" aria-label="Portfolio gallery">
@@ -685,6 +882,10 @@
       </p>
     </div>
     <div class="ig-gallery__actions">
+      <button class="ig-gallery__btn ig-gallery__review-toggle" type="button" data-ig-review-toggle>
+        <svg viewBox="0 0 16 16"><path d="M1 3h14M1 8h14M1 13h14"/><circle cx="5" cy="3" r="1.5" fill="currentColor" stroke="none"/><circle cx="11" cy="8" r="1.5" fill="currentColor" stroke="none"/><circle cx="7" cy="13" r="1.5" fill="currentColor" stroke="none"/></svg>
+        Review
+      </button>
     </div>
   </header>
 
@@ -2140,6 +2341,19 @@
     </div>
   </div>
 
+  <!-- Review mode floating bar -->
+  <div class="ig-gallery__review-bar" data-ig-review-bar>
+    <span class="ig-gallery__review-bar-count" data-ig-review-count></span>
+    <button class="ig-gallery__review-bar-copy" type="button" data-ig-review-copy>
+      <svg viewBox="0 0 16 16"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg>
+      Copy to Clipboard
+    </button>
+    <button class="ig-gallery__review-bar-clear" type="button" data-ig-review-clear>Clear All</button>
+  </div>
+
+  <!-- Toast notification -->
+  <div class="ig-gallery__toast" data-ig-toast></div>
+
 </section>
 
 <script>
@@ -2181,13 +2395,23 @@
     };
   });
 
+  /* ── Review mode DOM refs ─────────────── */
+  var reviewBar   = $('[data-ig-review-bar]', gallery);
+  var reviewCount = $('[data-ig-review-count]', gallery);
+  var reviewCopy  = $('[data-ig-review-copy]', gallery);
+  var reviewClear = $('[data-ig-review-clear]', gallery);
+  var toast       = $('[data-ig-toast]', gallery);
+
   /* ── State ─────────────────────────────── */
-  var activeTab  = 'all';
-  var view       = 'grid';       // 'grid' | 'detail'
-  var curListing = null;
-  var lbOpen     = false;
-  var lbPhotos   = [];
-  var lbIndex    = 0;
+  var activeTab    = 'all';
+  var view         = 'grid';       // 'grid' | 'detail'
+  var curListing   = null;
+  var curPropNum   = 0;            // property number for detail view
+  var lbOpen       = false;
+  var lbPhotos     = [];
+  var lbIndex      = 0;
+  var reviewMode   = false;
+  var selected     = {};           // key: "propId:photoIdx" → { propNum, photoNum, filename, title }
 
   /* ── Card factory ──────────────────────── */
   function makeCard(opts) {
@@ -2239,6 +2463,30 @@
       btn.appendChild(labelWrap);
     }
 
+    // Review mode: number badge
+    if (opts.number !== undefined) {
+      var numEl = document.createElement('div');
+      numEl.className = 'ig-gallery__card-number';
+      numEl.textContent = opts.number;
+      btn.appendChild(numEl);
+    }
+
+    // Review mode: checkbox
+    if (opts.selectable) {
+      var check = document.createElement('div');
+      check.className = 'ig-gallery__card-check';
+      check.innerHTML = '<svg viewBox="0 0 16 16"><path d="M3.5 8.5L6.5 11.5L12.5 4.5"/></svg>';
+      check.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleSelect(opts.selectKey, opts.selectMeta, btn);
+      });
+      btn.appendChild(check);
+      // Restore selected state if already selected
+      if (selected[opts.selectKey]) {
+        btn.classList.add('ig-gallery__card--selected');
+      }
+    }
+
     btn.addEventListener('click', opts.onClick);
     return btn;
   }
@@ -2252,14 +2500,22 @@
 
     emptyEl.hidden = items.length > 0;
 
-    items.forEach(function (listing) {
-      grid.appendChild(makeCard({
+    items.forEach(function (listing, idx) {
+      var num = idx + 1;
+      var cardOpts = {
         src:       listing.cover,
         label:     listing.title,
         badge:     listing.photos.length + ' photos',
         ariaLabel: listing.title,
-        onClick:   function () { enterDetail(listing); }
-      }));
+        onClick:   (function (l, n) { return function () { enterDetail(l, n); }; })(listing, num)
+      };
+      if (reviewMode) {
+        cardOpts.number = num;
+        cardOpts.selectable = true;
+        cardOpts.selectKey = listing.id + ':cover';
+        cardOpts.selectMeta = { propId: listing.id, propNum: num, photoIndex: -1, photoNum: String(num), filename: '', title: listing.title, isProperty: true };
+      }
+      grid.appendChild(makeCard(cardOpts));
     });
   }
 
@@ -2269,20 +2525,29 @@
     if (!curListing) return;
 
     curListing.photos.forEach(function (src, i) {
-      grid.appendChild(makeCard({
+      var photoNum = curPropNum + '.' + (i + 1);
+      var cardOpts = {
         src:       src,
         icon:      'expand',
         ariaLabel: curListing.title + ' \u2013 Photo ' + (i + 1),
         onClick:   function () { openLightbox(i); }
-      }));
+      };
+      if (reviewMode) {
+        cardOpts.number = photoNum;
+        cardOpts.selectable = true;
+        cardOpts.selectKey = curListing.id + ':' + i;
+        cardOpts.selectMeta = { propId: curListing.id, propNum: curPropNum, photoIndex: i, photoNum: photoNum, filename: getFilename(src), title: curListing.title, isProperty: false };
+      }
+      grid.appendChild(makeCard(cardOpts));
     });
   }
 
-  function enterDetail(listing) {
+  function enterDetail(listing, propNum) {
     view = 'detail';
     curListing = listing;
+    curPropNum = propNum || 0;
     crumb.hidden = false;
-    crumbTitle.innerHTML = listing.title;
+    crumbTitle.innerHTML = (reviewMode && curPropNum ? '#' + curPropNum + ' — ' : '') + listing.title;
     crumbMeta.textContent = listing.photos.length + ' photo' + (listing.photos.length !== 1 ? 's' : '');
     tabsNav.hidden = true;
     gallery.classList.add('ig-gallery--detail');
@@ -2297,6 +2562,104 @@
     tabsNav.hidden = false;
     gallery.classList.remove('ig-gallery--detail');
     renderGrid();
+  }
+
+  /* ── Review mode ─────────────────────────── */
+  function getFilename(url) {
+    return url.split('/').pop().split('?')[0] || url;
+  }
+
+  function toggleReview() {
+    reviewMode = !reviewMode;
+    gallery.classList.toggle('ig-gallery--review', reviewMode);
+    if (!reviewMode) {
+      selected = {};
+      updateReviewBar();
+    }
+    // Re-render current view
+    if (view === 'detail') renderDetail();
+    else renderGrid();
+  }
+
+  function toggleSelect(key, meta, cardEl) {
+    if (selected[key]) {
+      delete selected[key];
+      cardEl.classList.remove('ig-gallery__card--selected');
+    } else {
+      selected[key] = meta;
+      cardEl.classList.add('ig-gallery__card--selected');
+    }
+    updateReviewBar();
+  }
+
+  function updateReviewBar() {
+    var count = Object.keys(selected).length;
+    if (count > 0 && reviewMode) {
+      reviewBar.classList.add('ig-gallery__review-bar--visible');
+      reviewCount.innerHTML = '<strong>' + count + '</strong> item' + (count !== 1 ? 's' : '') + ' selected';
+    } else {
+      reviewBar.classList.remove('ig-gallery__review-bar--visible');
+    }
+  }
+
+  function copySelection() {
+    var keys = Object.keys(selected);
+    if (!keys.length) return;
+
+    // Group by property
+    var groups = {};
+    keys.forEach(function (k) {
+      var meta = selected[k];
+      var gk = meta.propId;
+      if (!groups[gk]) {
+        groups[gk] = { propNum: meta.propNum, title: meta.title, photos: [], isWholeProperty: false };
+      }
+      if (meta.isProperty) {
+        groups[gk].isWholeProperty = true;
+      } else {
+        groups[gk].photos.push(meta);
+      }
+    });
+
+    // Sort groups by propNum
+    var sortedGroups = Object.keys(groups).map(function (k) { return groups[k]; })
+      .sort(function (a, b) { return a.propNum - b.propNum; });
+
+    // Build text
+    var lines = [];
+    sortedGroups.forEach(function (g) {
+      lines.push('#' + g.propNum + '  ' + g.title);
+      if (g.isWholeProperty && g.photos.length === 0) {
+        lines.push('    (entire property)');
+      }
+      // Sort photos by index
+      g.photos.sort(function (a, b) { return a.photoIndex - b.photoIndex; });
+      g.photos.forEach(function (p) {
+        lines.push('    ' + p.photoNum + '  — ' + p.filename);
+      });
+    });
+
+    var text = lines.join('\n');
+    navigator.clipboard.writeText(text).then(function () {
+      showToast('Copied ' + keys.length + ' item' + (keys.length !== 1 ? 's' : '') + ' to clipboard');
+    }, function () {
+      showToast('Copy failed — try again');
+    });
+  }
+
+  function clearSelection() {
+    selected = {};
+    updateReviewBar();
+    if (view === 'detail') renderDetail();
+    else renderGrid();
+  }
+
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add('ig-gallery__toast--show');
+    setTimeout(function () {
+      toast.classList.remove('ig-gallery__toast--show');
+    }, 2200);
   }
 
   /* ── Lightbox ──────────────────────────── */
@@ -2372,6 +2735,12 @@
   // Wire up the detail header back button
   var crumbBack = $('[data-ig-crumb-back]', gallery);
   if (crumbBack) crumbBack.addEventListener('click', exitDetail);
+
+  // Review mode controls
+  var reviewToggle = $('[data-ig-review-toggle]', gallery);
+  if (reviewToggle) reviewToggle.addEventListener('click', toggleReview);
+  if (reviewCopy) reviewCopy.addEventListener('click', copySelection);
+  if (reviewClear) reviewClear.addEventListener('click', clearSelection);
 
   tabBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
