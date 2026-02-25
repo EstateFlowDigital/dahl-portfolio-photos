@@ -2337,17 +2337,59 @@
 </script>
 
 <script>
-// Iframe resize communication
+// Iframe resize communication — sends height to parent on every change
 (function() {
+  var lastH = 0;
   function sendHeight() {
-    var h = document.querySelector('.ig-gallery').scrollHeight;
-    window.parent.postMessage({ type: 'ig-gallery-resize', height: h }, '*');
+    // Use the larger of body scroll and gallery scroll for accuracy
+    var gallery = document.querySelector('.ig-gallery');
+    var h = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+      gallery ? gallery.scrollHeight : 0
+    );
+    if (h !== lastH) {
+      lastH = h;
+      window.parent.postMessage({ type: 'ig-gallery-resize', height: h }, '*');
+    }
   }
+
+  // Observe size changes on gallery element
+  var gallery = document.querySelector('.ig-gallery');
+  if (gallery && window.ResizeObserver) {
+    new ResizeObserver(sendHeight).observe(gallery);
+  }
+
+  // Also observe the body for overall layout shifts
   if (window.ResizeObserver) {
-    new ResizeObserver(sendHeight).observe(document.querySelector('.ig-gallery'));
+    new ResizeObserver(sendHeight).observe(document.body);
   }
+
+  // Fire on load and images loading (which change height)
   window.addEventListener('load', sendHeight);
-  setInterval(sendHeight, 1000);
+  window.addEventListener('resize', sendHeight);
+
+  // Listen for any click (tab switch, card click, back) — recheck after DOM settles
+  document.addEventListener('click', function() {
+    sendHeight();
+    setTimeout(sendHeight, 50);
+    setTimeout(sendHeight, 200);
+    setTimeout(sendHeight, 500);
+  });
+
+  // MutationObserver for DOM changes (grid re-renders)
+  if (window.MutationObserver && gallery) {
+    new MutationObserver(sendHeight).observe(gallery, {
+      childList: true, subtree: true, attributes: true
+    });
+  }
+
+  // Fallback polling every 500ms
+  setInterval(sendHeight, 500);
+
+  // Initial send
+  sendHeight();
+  setTimeout(sendHeight, 100);
 })();
 </script>
 </body>
