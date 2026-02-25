@@ -159,37 +159,117 @@
   color: var(--ig-text);
 }
 
-/* — Breadcrumb (detail view) — */
+/* — Detail header (shown when viewing a listing) — */
 .ig-gallery__crumb[hidden] { display: none; }
 .ig-gallery__crumb {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.625rem 0.875rem;
+  margin: 0.5rem 0 1.25rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--ig-border);
+  background: var(--ig-panel);
+  border-radius: var(--ig-radius);
+  border-top: 3px solid var(--ig-accent);
+  animation: ig-detail-enter 300ms ease both;
+}
+
+@keyframes ig-detail-enter {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ig-gallery__crumb-back {
+  appearance: none;
   border: 1px solid var(--ig-border);
   background: var(--ig-panel-2);
-  border-radius: var(--ig-radius-sm);
-  margin: 0.75rem 0 1rem;
+  color: var(--ig-muted);
+  padding: 0.4rem 0.875rem 0.4rem 0.625rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.75rem;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: border-color 120ms ease, color 120ms ease, background 120ms ease;
+  margin-bottom: 0.75rem;
+}
+.ig-gallery__crumb-back:hover {
+  border-color: var(--ig-accent);
+  color: var(--ig-text);
+  background: var(--ig-accent-bg);
+}
+.ig-gallery__crumb-back svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .ig-gallery__crumb-title {
   margin: 0;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  line-height: 1.2;
   color: var(--ig-text);
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  flex: 1;
 }
 
 .ig-gallery__crumb-meta {
-  margin: 0;
+  margin: 0.25rem 0 0;
+  color: var(--ig-muted);
+  font-size: 0.8125rem;
+}
+
+.ig-gallery__crumb-hint {
+  margin: 0.5rem 0 0;
   color: var(--ig-muted);
   font-size: 0.75rem;
-  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+/* — Detail view animation — */
+.ig-gallery--detail .ig-gallery__card {
+  animation: ig-card-enter 250ms ease both;
+}
+@keyframes ig-card-enter {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* — Expand icon (detail view photo cards) — */
+.ig-gallery__card-expand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 150ms ease, transform 150ms ease;
+  z-index: 2;
+}
+.ig-gallery__card-expand svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.9);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ig-gallery__card:hover .ig-gallery__card-expand {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 /* — Card grid — */
@@ -622,10 +702,15 @@
     <button class="ig-gallery__tab" type="button" data-ig-tab="large-homes">Large Homes</button>
   </nav>
 
-  <!-- Breadcrumb (shown in detail view) -->
+  <!-- Detail header (shown when viewing a listing) -->
   <div class="ig-gallery__crumb" data-ig-crumb hidden>
+    <button class="ig-gallery__crumb-back" type="button" data-ig-crumb-back>
+      <svg viewBox="0 0 16 16"><path d="M10 3L5 8l5 5"/></svg>
+      All Projects
+    </button>
     <p class="ig-gallery__crumb-title" data-ig-crumb-title></p>
     <p class="ig-gallery__crumb-meta" data-ig-crumb-meta></p>
+    <p class="ig-gallery__crumb-hint">Tap any photo to open the lightbox</p>
   </div>
 
   <!-- Hidden data source (swap images/listings here) -->
@@ -2129,11 +2214,18 @@
     overlay.className = 'ig-gallery__card-overlay';
     btn.appendChild(overlay);
 
-    // Arrow indicator
-    var arrow = document.createElement('div');
-    arrow.className = 'ig-gallery__card-arrow';
-    arrow.innerHTML = '<svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg>';
-    btn.appendChild(arrow);
+    // Icon indicator — arrow for grid cards, expand for detail photos
+    if (opts.icon === 'expand') {
+      var expand = document.createElement('div');
+      expand.className = 'ig-gallery__card-expand';
+      expand.innerHTML = '<svg viewBox="0 0 16 16"><path d="M2 10v4h4M14 6V2h-4M2 14L6.5 9.5M14 2L9.5 6.5"/></svg>';
+      btn.appendChild(expand);
+    } else {
+      var arrow = document.createElement('div');
+      arrow.className = 'ig-gallery__card-arrow';
+      arrow.innerHTML = '<svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg>';
+      btn.appendChild(arrow);
+    }
 
     if (opts.label || opts.badge) {
       var labelWrap = document.createElement('div');
@@ -2186,6 +2278,7 @@
     curListing.photos.forEach(function (src, i) {
       grid.appendChild(makeCard({
         src:       src,
+        icon:      'expand',
         ariaLabel: curListing.title + ' \u2013 Photo ' + (i + 1),
         onClick:   function () { openLightbox(i); }
       }));
@@ -2200,6 +2293,7 @@
     crumbTitle.innerHTML = listing.title;
     crumbMeta.textContent = listing.photos.length + ' photo' + (listing.photos.length !== 1 ? 's' : '');
     tabsNav.hidden = true;
+    gallery.classList.add('ig-gallery--detail');
     renderDetail();
     gallery.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
@@ -2210,6 +2304,7 @@
     backBtn.hidden = true;
     crumb.hidden = true;
     tabsNav.hidden = false;
+    gallery.classList.remove('ig-gallery--detail');
     renderGrid();
   }
 
@@ -2284,6 +2379,10 @@
 
   /* ── Events ────────────────────────────── */
   backBtn.addEventListener('click', exitDetail);
+
+  // Also wire up the detail header back button
+  var crumbBack = $('[data-ig-crumb-back]', gallery);
+  if (crumbBack) crumbBack.addEventListener('click', exitDetail);
 
   tabBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
