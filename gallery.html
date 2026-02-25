@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dahl House Designz Portfolio</title>
+  <title>Dahl House Designs Portfolio</title>
 </head>
 <body style="margin:0; padding:0; background:#0f1318;">
 <style>
@@ -685,12 +685,6 @@
       </p>
     </div>
     <div class="ig-gallery__actions">
-      <button
-        class="ig-gallery__btn ig-gallery__btn--ghost"
-        type="button"
-        data-ig-action="back"
-        hidden
-      >&#8592; Back</button>
     </div>
   </header>
 
@@ -2162,7 +2156,6 @@
   /* ── DOM refs ──────────────────────────── */
   var grid       = $('[data-ig-grid]', gallery);
   var tabBtns    = $$('[data-ig-tab]', gallery);
-  var backBtn    = $('[data-ig-action="back"]', gallery);
   var crumb      = $('[data-ig-crumb]', gallery);
   var crumbTitle = $('[data-ig-crumb-title]', gallery);
   var crumbMeta  = $('[data-ig-crumb-meta]', gallery);
@@ -2288,7 +2281,6 @@
   function enterDetail(listing) {
     view = 'detail';
     curListing = listing;
-    backBtn.hidden = false;
     crumb.hidden = false;
     crumbTitle.innerHTML = listing.title;
     crumbMeta.textContent = listing.photos.length + ' photo' + (listing.photos.length !== 1 ? 's' : '');
@@ -2301,7 +2293,6 @@
   function exitDetail() {
     view = 'grid';
     curListing = null;
-    backBtn.hidden = true;
     crumb.hidden = true;
     tabsNav.hidden = false;
     gallery.classList.remove('ig-gallery--detail');
@@ -2378,9 +2369,7 @@
   }
 
   /* ── Events ────────────────────────────── */
-  backBtn.addEventListener('click', exitDetail);
-
-  // Also wire up the detail header back button
+  // Wire up the detail header back button
   var crumbBack = $('[data-ig-crumb-back]', gallery);
   if (crumbBack) crumbBack.addEventListener('click', exitDetail);
 
