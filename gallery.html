@@ -75,13 +75,6 @@
 }
 
 /* — Action buttons — */
-.ig-gallery__actions {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  flex-shrink: 0;
-}
-
 .ig-gallery__btn {
   appearance: none;
   border: 1px solid var(--ig-border);
@@ -659,10 +652,6 @@
     gap: 0.5rem;
   }
 
-  .ig-gallery__actions {
-    align-self: flex-start;
-  }
-
   .ig-gallery__grid {
     gap: 6px;
   }
@@ -673,202 +662,6 @@
   }
 }
 
-/* ========================================
-   Review Mode
-   ======================================== */
-
-/* Toggle button */
-.ig-gallery__review-toggle {
-  position: relative;
-  gap: 0.4rem;
-}
-.ig-gallery__review-toggle svg {
-  width: 14px;
-  height: 14px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  flex-shrink: 0;
-}
-.ig-gallery--review .ig-gallery__review-toggle {
-  background: var(--ig-accent-bg);
-  border-color: var(--ig-accent);
-  color: #fff;
-}
-
-/* Number badge (top-left of card) */
-.ig-gallery__card-number {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  min-width: 28px;
-  height: 28px;
-  padding: 0 7px;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(6px);
-  color: #fff;
-  font-size: 0.75rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 3;
-  pointer-events: none;
-  line-height: 1;
-  letter-spacing: -0.01em;
-}
-
-/* Checkbox (bottom-right of card) */
-.ig-gallery__card-check {
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
-  width: 26px;
-  height: 26px;
-  border-radius: 6px;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(6px);
-  cursor: pointer;
-  z-index: 4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color 120ms ease, background 120ms ease, transform 100ms ease;
-}
-.ig-gallery__card-check:hover {
-  border-color: var(--ig-accent);
-  background: rgba(0, 0, 0, 0.6);
-  transform: scale(1.1);
-}
-.ig-gallery__card-check svg {
-  width: 14px;
-  height: 14px;
-  fill: none;
-  stroke: #fff;
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  opacity: 0;
-  transition: opacity 100ms ease;
-}
-
-/* Selected card */
-.ig-gallery__card--selected {
-  box-shadow: 0 0 0 3px var(--ig-accent), var(--ig-shadow);
-}
-.ig-gallery__card--selected .ig-gallery__card-check {
-  background: var(--ig-accent);
-  border-color: var(--ig-accent);
-}
-.ig-gallery__card--selected .ig-gallery__card-check svg {
-  opacity: 1;
-}
-
-/* Floating review bar */
-.ig-gallery__review-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #161b22;
-  border-top: 1px solid var(--ig-border-2);
-  padding: 0.75rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  z-index: 9999;
-  transform: translateY(100%);
-  transition: transform 250ms ease;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
-}
-.ig-gallery__review-bar--visible {
-  transform: translateY(0);
-}
-.ig-gallery__review-bar-count {
-  color: var(--ig-muted);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  white-space: nowrap;
-}
-.ig-gallery__review-bar-count strong {
-  color: var(--ig-text);
-}
-.ig-gallery__review-bar-copy {
-  appearance: none;
-  border: 1px solid var(--ig-accent);
-  background: var(--ig-accent-bg);
-  color: #fff;
-  padding: 0.5rem 1.25rem;
-  border-radius: 999px;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 0.8125rem;
-  font-family: inherit;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  transition: background 120ms ease, transform 100ms ease;
-}
-.ig-gallery__review-bar-copy:hover {
-  background: rgba(120, 170, 255, 0.25);
-}
-.ig-gallery__review-bar-copy:active {
-  transform: scale(0.97);
-}
-.ig-gallery__review-bar-copy svg {
-  width: 14px;
-  height: 14px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.ig-gallery__review-bar-clear {
-  appearance: none;
-  border: 1px solid var(--ig-border);
-  background: transparent;
-  color: var(--ig-muted);
-  padding: 0.5rem 1rem;
-  border-radius: 999px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 0.75rem;
-  font-family: inherit;
-  transition: color 120ms ease, border-color 120ms ease;
-}
-.ig-gallery__review-bar-clear:hover {
-  color: var(--ig-text);
-  border-color: var(--ig-border-2);
-}
-
-/* Toast notification */
-.ig-gallery__toast {
-  position: fixed;
-  bottom: 80px;
-  left: 50%;
-  transform: translateX(-50%) translateY(20px);
-  background: #1c8a4e;
-  color: #fff;
-  padding: 0.625rem 1.25rem;
-  border-radius: 999px;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  opacity: 0;
-  transition: opacity 200ms ease, transform 200ms ease;
-  z-index: 10000;
-  pointer-events: none;
-  white-space: nowrap;
-}
-.ig-gallery__toast--show {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
 </style>
 
 <section class="ig-gallery" aria-label="Portfolio gallery">
@@ -880,12 +673,6 @@
       <p class="ig-gallery__subtitle">
         Tap a cover to view a project. Tap a photo to open the lightbox.
       </p>
-    </div>
-    <div class="ig-gallery__actions">
-      <button class="ig-gallery__btn ig-gallery__review-toggle" type="button" data-ig-review-toggle>
-        <svg viewBox="0 0 16 16"><path d="M1 3h14M1 8h14M1 13h14"/><circle cx="5" cy="3" r="1.5" fill="currentColor" stroke="none"/><circle cx="11" cy="8" r="1.5" fill="currentColor" stroke="none"/><circle cx="7" cy="13" r="1.5" fill="currentColor" stroke="none"/></svg>
-        Review
-      </button>
     </div>
   </header>
 
@@ -949,32 +736,6 @@
       <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/10233%20Parish%20Pl%2C%20Cupertino%2C%20CA%2095014%2C%20USA/10233%20Parish%20Pl-Photos%20%20%289%29.webp" alt="" />
     </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="1043-colton-ave"
-         data-title="Single Family &bull; Sunnyvale"
-         data-category="single-family">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/1043%20Colton%20Ave%2C%20Sunnyvale%2C%20CA%2094089%2C%20USA/1043%20Colton%20Ave-Photo-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1043%20Colton%20Ave%2C%20Sunnyvale%2C%20CA%2094089%2C%20USA/1043%20Colton%20Ave-Photo-10.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1043%20Colton%20Ave%2C%20Sunnyvale%2C%20CA%2094089%2C%20USA/1043%20Colton%20Ave-Photo-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1043%20Colton%20Ave%2C%20Sunnyvale%2C%20CA%2094089%2C%20USA/1043%20Colton%20Ave-Photo-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1043%20Colton%20Ave%2C%20Sunnyvale%2C%20CA%2094089%2C%20USA/1043%20Colton%20Ave-Photo-13.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1043%20Colton%20Ave%2C%20Sunnyvale%2C%20CA%2094089%2C%20USA/1043%20Colton%20Ave-Photo-14.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1043%20Colton%20Ave%2C%20Sunnyvale%2C%20CA%2094089%2C%20USA/1043%20Colton%20Ave-Photo-15.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1043%20Colton%20Ave%2C%20Sunnyvale%2C%20CA%2094089%2C%20USA/1043%20Colton%20Ave-Photo-16.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1043%20Colton%20Ave%2C%20Sunnyvale%2C%20CA%2094089%2C%20USA/1043%20Colton%20Ave-Photo-17.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1043%20Colton%20Ave%2C%20Sunnyvale%2C%20CA%2094089%2C%20USA/1043%20Colton%20Ave-Photo-18.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1043%20Colton%20Ave%2C%20Sunnyvale%2C%20CA%2094089%2C%20USA/1043%20Colton%20Ave-Photo-19.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1043%20Colton%20Ave%2C%20Sunnyvale%2C%20CA%2094089%2C%20USA/1043%20Colton%20Ave-Photo-20.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1043%20Colton%20Ave%2C%20Sunnyvale%2C%20CA%2094089%2C%20USA/1043%20Colton%20Ave-Photo-21.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1043%20Colton%20Ave%2C%20Sunnyvale%2C%20CA%2094089%2C%20USA/1043%20Colton%20Ave-Photo-27.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1043%20Colton%20Ave%2C%20Sunnyvale%2C%20CA%2094089%2C%20USA/1043%20Colton%20Ave-Photo-28.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1043%20Colton%20Ave%2C%20Sunnyvale%2C%20CA%2094089%2C%20USA/1043%20Colton%20Ave-Photo-4.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1043%20Colton%20Ave%2C%20Sunnyvale%2C%20CA%2094089%2C%20USA/1043%20Colton%20Ave-Photo-5.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1043%20Colton%20Ave%2C%20Sunnyvale%2C%20CA%2094089%2C%20USA/1043%20Colton%20Ave-Photo-6.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1043%20Colton%20Ave%2C%20Sunnyvale%2C%20CA%2094089%2C%20USA/1043%20Colton%20Ave-Photo-7.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1043%20Colton%20Ave%2C%20Sunnyvale%2C%20CA%2094089%2C%20USA/1043%20Colton%20Ave-Photo-8.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1043%20Colton%20Ave%2C%20Sunnyvale%2C%20CA%2094089%2C%20USA/1043%20Colton%20Ave-Photo-9.webp" alt="" />
-    </div>
 
     <div class="ig-gallery__listing" data-ig-listing
          data-id="110-hanna-way"
@@ -1027,127 +788,8 @@
       <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/110%20Hanna%20Way%2C%20Menlo%20Park%2C%20CA%2094025%2C%20USA/110%20Hanna%20Way-9.webp" alt="" />
     </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="1155-cedarwood-way"
-         data-title="Large Home &bull; Redwood City"
-         data-category="large-homes">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%202.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-10.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-13.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-14.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-15.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-16.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-17.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-18.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-19.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-20.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-23.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-24.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-25.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-26.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-27.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-28.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-30.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-31.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-32.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-33.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-34.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-35.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-36.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-37.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-4.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-5.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-6.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-7.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-8.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood%20Way-9.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1155%20Cedarwood%20Way%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/1155%20Cedarwood.webp" alt="" />
-    </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="1177-runnymede-dr"
-         data-title="Single Family &bull; San Jose"
-         data-category="single-family">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2812%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2810%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2811%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2812%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2813%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2814%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2815%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2816%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2817%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2818%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2819%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2820%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2821%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2822%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2823%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2824%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2825%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2826%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2827%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2828%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2829%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2830%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2831%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2832%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2833%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2834%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2835%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%2836%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%285%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%286%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%287%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%288%29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1177%20Runnymede%20Dr%2C%20San%20Jose%2C%20CA%2095117%2C%20USA/1177%20Runnymede%20Dr%20%289%29.webp" alt="" />
-    </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="1285-hamilton-ave"
-         data-title="Large Home &bull; Palo Alto"
-         data-category="large-homes">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-10.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-13.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-14.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-15.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-16.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-17.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-18.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-19.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-20.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-21.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-22.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-23.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-24.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-25.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-26.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-27.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-28.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-30.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-31.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-32.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-33.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-34.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-35.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-36.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-37.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-38.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-43.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-5.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-6.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-7.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-8.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1285%20Hamilton%20Ave%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/1285%20Hamilton%20Ave-Photo-9.webp" alt="" />
-    </div>
 
     <div class="ig-gallery__listing" data-ig-listing
          data-id="1402-oak-ave"
@@ -1195,106 +837,8 @@
       <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1402%20Oak%20Ave%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/1402%20Oak%20Ave-Photo-5.webp" alt="" />
     </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="1547-columbus-ave"
-         data-title="Single Family &bull; Burlingame"
-         data-category="single-family">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-10.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-13.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-14.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-15.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-16.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-17.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-18.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-19.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-20.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-21.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-22.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-23.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-24.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-25.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-26.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-27.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-28.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-31.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-33.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-34.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-35.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-36.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-37.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-38.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-4.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-46.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-5.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-6.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-7.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-8.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1547%20Columbus%20Ave%2C%20Burlingame%2C%20CA%2094010%2C%20USA/1547%20Columbus%20Ave-Photo-9.webp" alt="" />
-    </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="1797-pilgrim-ave"
-         data-title="Single Family &bull; Mountain View"
-         data-category="single-family">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/1797%20Pilgrim%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/1797%20Pilgrim%20Ave-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1797%20Pilgrim%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/1797%20Pilgrim%20Ave-10.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1797%20Pilgrim%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/1797%20Pilgrim%20Ave-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1797%20Pilgrim%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/1797%20Pilgrim%20Ave-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1797%20Pilgrim%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/1797%20Pilgrim%20Ave-2.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1797%20Pilgrim%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/1797%20Pilgrim%20Ave-3.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1797%20Pilgrim%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/1797%20Pilgrim%20Ave-4.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1797%20Pilgrim%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/1797%20Pilgrim%20Ave-5.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1797%20Pilgrim%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/1797%20Pilgrim%20Ave-6.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1797%20Pilgrim%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/1797%20Pilgrim%20Ave-7.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1797%20Pilgrim%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/1797%20Pilgrim%20Ave-8.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1797%20Pilgrim%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/1797%20Pilgrim%20Ave-9.webp" alt="" />
-    </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="1838-ogden-dr"
-         data-title="Condo &bull; Burlingame"
-         data-category="condo">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-10.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-13.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-14.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-15.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-16.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-17.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-18.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-19.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-20.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-21.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-22.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-23.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-24.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-25.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-27.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-28.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-30.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-31.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-32.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-33.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-34.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-39.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-40.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-41.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-42.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-43.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-44.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-45.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-6.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-7.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-8.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/1838%20Ogden%20Dr%2C%20Burlingame%2C%20CA%2094010%2C%20USA%20413/1838%20Ogden%20Dr-Photo-9.webp" alt="" />
-    </div>
 
     <div class="ig-gallery__listing" data-ig-listing
          data-id="188-w-dana-st"
@@ -1336,41 +880,6 @@
       <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/188%20W%20Dana%20St%2C%20Mountain%20View%2C%20CA%2094041%2C%20USA/188%20W%20Dana%20St-9.webp" alt="" />
     </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="201-ortega-ave"
-         data-title="Single Family &bull; Mountain View"
-         data-category="single-family">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-10.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-13.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-14.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-15.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-16.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-17.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-18.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-19.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-20.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-21.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-23.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-24.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-25.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-27.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-28.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-30.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-31.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-34.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-38.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-39.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-4.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-5.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-6.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-7.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-8.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/201%20Ortega%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/201%20Ortega%20Ave-9.webp" alt="" />
-    </div>
 
     <div class="ig-gallery__listing" data-ig-listing
          data-id="2330-sierra-ct"
@@ -1457,51 +966,6 @@
       <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2404%20Gabriel%20Ave%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/2404%20Gabriel%20Ave-Photo-9.webp" alt="" />
     </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="243-sierra-vista-ave"
-         data-title="Single Family &bull; Mountain View"
-         data-category="single-family">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-10.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-13.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-14.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-15.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-16.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-17.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-18.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-19.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-20.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-21.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-22.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-23.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-24.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-25.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-26.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-27.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-28.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-30.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-31.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-32.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-33.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-34.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-35.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-36.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-37.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-38.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-39.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-4.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-40.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-41.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-42.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-45.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-46.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-47.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-5.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/243%20Sierra%20Vista%20Ave%2C%20Mountain%20View%2C%20CA%2094043%2C%20USA/243%20Sierra%20Vista-50.webp" alt="" />
-    </div>
 
     <div class="ig-gallery__listing" data-ig-listing
          data-id="2621-greer-rd"
@@ -1539,184 +1003,11 @@
       <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2621%20Greer%20Rd%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/2621%20Greer%20Rd-9.webp" alt="" />
     </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="2621-greer-rd"
-         data-title="Single Family &bull; Palo Alto"
-         data-category="single-family">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/2621%20Greer%20Rd%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA%20%28Kris%29/2621%20Greer%20Rd-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2621%20Greer%20Rd%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA%20%28Kris%29/2621%20Greer%20Rd-10.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2621%20Greer%20Rd%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA%20%28Kris%29/2621%20Greer%20Rd-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2621%20Greer%20Rd%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA%20%28Kris%29/2621%20Greer%20Rd-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2621%20Greer%20Rd%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA%20%28Kris%29/2621%20Greer%20Rd-13.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2621%20Greer%20Rd%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA%20%28Kris%29/2621%20Greer%20Rd-14.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2621%20Greer%20Rd%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA%20%28Kris%29/2621%20Greer%20Rd-15.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2621%20Greer%20Rd%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA%20%28Kris%29/2621%20Greer%20Rd-16.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2621%20Greer%20Rd%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA%20%28Kris%29/2621%20Greer%20Rd-17.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2621%20Greer%20Rd%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA%20%28Kris%29/2621%20Greer%20Rd-18.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2621%20Greer%20Rd%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA%20%28Kris%29/2621%20Greer%20Rd-19.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2621%20Greer%20Rd%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA%20%28Kris%29/2621%20Greer%20Rd-20.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2621%20Greer%20Rd%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA%20%28Kris%29/2621%20Greer%20Rd-4.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2621%20Greer%20Rd%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA%20%28Kris%29/2621%20Greer%20Rd-5.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2621%20Greer%20Rd%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA%20%28Kris%29/2621%20Greer%20Rd-6.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2621%20Greer%20Rd%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA%20%28Kris%29/2621%20Greer%20Rd-8.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2621%20Greer%20Rd%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA%20%28Kris%29/2621%20Greer%20Rd-9.webp" alt="" />
-    </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="2987-alexis-dr"
-         data-title="Large Home &bull; Palo Alto"
-         data-category="large-homes">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-10.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-13.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-14.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-15.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-17.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-18.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-19.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-20.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-21.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-22.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-23.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-24.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-25.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-26.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-27.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-28.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-31.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-32.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-33.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-34.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-35.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-37.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-38.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-4.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-40.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-5.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-6.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-7.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-8.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/2987%20Alexis%20Dr%2C%20Palo%20Alto%2C%20CA%2094304%2C%20USA/2987%20Alexis%20Dr-Photo-9.webp" alt="" />
-    </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="300-berry-st-1608"
-         data-title="Condo &bull; San Francisco"
-         data-category="condo">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-1.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-10.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-13.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-14.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-15.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-16.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-17.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-18.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-2.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-20.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-21.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-22.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-23.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-24.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-26.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-3.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-4.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-5.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-6.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-7.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-8.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/300%20Berry%20St%20%231608%2C%20San%20Francisco%2C%20CA%2094158%2C%20USA%201608/300%20Berry%20St%20%231608-Photo-9.webp" alt="" />
-    </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="319-madrone-st"
-         data-title="Single Family &bull; Redwood City"
-         data-category="single-family">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/319%20Madrone%20St%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/319%20Madrone%20St-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/319%20Madrone%20St%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/319%20Madrone%20St-10.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/319%20Madrone%20St%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/319%20Madrone%20St-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/319%20Madrone%20St%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/319%20Madrone%20St-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/319%20Madrone%20St%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/319%20Madrone%20St-13.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/319%20Madrone%20St%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/319%20Madrone%20St-14.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/319%20Madrone%20St%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/319%20Madrone%20St-15.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/319%20Madrone%20St%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/319%20Madrone%20St-16.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/319%20Madrone%20St%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/319%20Madrone%20St-17.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/319%20Madrone%20St%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/319%20Madrone%20St-18.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/319%20Madrone%20St%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/319%20Madrone%20St-19.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/319%20Madrone%20St%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/319%20Madrone%20St-20.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/319%20Madrone%20St%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/319%20Madrone%20St-5.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/319%20Madrone%20St%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/319%20Madrone%20St-6.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/319%20Madrone%20St%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/319%20Madrone%20St-7.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/319%20Madrone%20St%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/319%20Madrone%20St-8.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/319%20Madrone%20St%2C%20Redwood%20City%2C%20CA%2094061%2C%20USA/319%20Madrone%20St-9.webp" alt="" />
-    </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="3615-evergreen-dr"
-         data-title="Large Home &bull; Palo Alto"
-         data-category="large-homes">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-10.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-13.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-14.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-15.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-16.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-17.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-18.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-19.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-20.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-21.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-22.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-23.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-24.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-25.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-26.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-27.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-28.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-30.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-31.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-32.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-33.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-34.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-5.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-6.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-7.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-8.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/3615%20Evergreen%20Dr%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/3615%20Evergreen%20Dr-Photo-9.webp" alt="" />
-    </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="4388-el-camino-real-148"
-         data-title="Condo &bull; Los Altos"
-         data-category="condo">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/4388%20El%20Camino%20Real%20%23148%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/4388%20El%20Camino%20Real%20%2314811.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/4388%20El%20Camino%20Real%20%23148%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/4388%20El%20Camino%20Real%20%231481.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/4388%20El%20Camino%20Real%20%23148%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/4388%20El%20Camino%20Real%20%2314810.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/4388%20El%20Camino%20Real%20%23148%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/4388%20El%20Camino%20Real%20%2314811.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/4388%20El%20Camino%20Real%20%23148%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/4388%20El%20Camino%20Real%20%2314812.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/4388%20El%20Camino%20Real%20%23148%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/4388%20El%20Camino%20Real%20%2314813.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/4388%20El%20Camino%20Real%20%23148%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/4388%20El%20Camino%20Real%20%2314814.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/4388%20El%20Camino%20Real%20%23148%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/4388%20El%20Camino%20Real%20%2314815.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/4388%20El%20Camino%20Real%20%23148%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/4388%20El%20Camino%20Real%20%2314816.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/4388%20El%20Camino%20Real%20%23148%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/4388%20El%20Camino%20Real%20%2314817.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/4388%20El%20Camino%20Real%20%23148%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/4388%20El%20Camino%20Real%20%2314818.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/4388%20El%20Camino%20Real%20%23148%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/4388%20El%20Camino%20Real%20%2314819.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/4388%20El%20Camino%20Real%20%23148%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/4388%20El%20Camino%20Real%20%231482.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/4388%20El%20Camino%20Real%20%23148%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/4388%20El%20Camino%20Real%20%231483.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/4388%20El%20Camino%20Real%20%23148%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/4388%20El%20Camino%20Real%20%231484.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/4388%20El%20Camino%20Real%20%23148%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/4388%20El%20Camino%20Real%20%231485.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/4388%20El%20Camino%20Real%20%23148%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/4388%20El%20Camino%20Real%20%231486.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/4388%20El%20Camino%20Real%20%23148%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/4388%20El%20Camino%20Real%20%231487.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/4388%20El%20Camino%20Real%20%23148%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/4388%20El%20Camino%20Real%20%231488.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/4388%20El%20Camino%20Real%20%23148%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/4388%20El%20Camino%20Real%20%231489.webp" alt="" />
-    </div>
 
     <div class="ig-gallery__listing" data-ig-listing
          data-id="490-fulton-st"
@@ -1762,185 +1053,10 @@
       <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/490%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/490%20Fulton%20St-9.webp" alt="" />
     </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="498-fulton-st"
-         data-title="Large Home &bull; Palo Alto"
-         data-category="large-homes">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-10.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-13.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-14.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-15.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-16.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-17.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-18.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-19.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-20.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-21.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-22.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-23.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-24.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-25.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-26.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-27.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-28.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-30.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-31.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-32.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-33.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-34.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-36.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-39.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-40.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-5.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-6.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-7.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-8.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/498%20Fulton%20St%2C%20Palo%20Alto%2C%20CA%2094301%2C%20USA/498%20Fulton%20St-Photo-9.webp" alt="" />
-    </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="550-ortega-ave-apt-b321"
-         data-title="Condo &bull; Mountain View"
-         data-category="condo">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/550%20Ortega%20Ave%20APT%20B321%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/550%20Ortega%20Ave%20APT%20B321-Photo-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/550%20Ortega%20Ave%20APT%20B321%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/550%20Ortega%20Ave%20APT%20B321-Photo-10.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/550%20Ortega%20Ave%20APT%20B321%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/550%20Ortega%20Ave%20APT%20B321-Photo-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/550%20Ortega%20Ave%20APT%20B321%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/550%20Ortega%20Ave%20APT%20B321-Photo-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/550%20Ortega%20Ave%20APT%20B321%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/550%20Ortega%20Ave%20APT%20B321-Photo-13.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/550%20Ortega%20Ave%20APT%20B321%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/550%20Ortega%20Ave%20APT%20B321-Photo-14.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/550%20Ortega%20Ave%20APT%20B321%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/550%20Ortega%20Ave%20APT%20B321-Photo-15.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/550%20Ortega%20Ave%20APT%20B321%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/550%20Ortega%20Ave%20APT%20B321-Photo-16.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/550%20Ortega%20Ave%20APT%20B321%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/550%20Ortega%20Ave%20APT%20B321-Photo-17.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/550%20Ortega%20Ave%20APT%20B321%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/550%20Ortega%20Ave%20APT%20B321-Photo-18.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/550%20Ortega%20Ave%20APT%20B321%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/550%20Ortega%20Ave%20APT%20B321-Photo-19.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/550%20Ortega%20Ave%20APT%20B321%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/550%20Ortega%20Ave%20APT%20B321-Photo-20.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/550%20Ortega%20Ave%20APT%20B321%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/550%20Ortega%20Ave%20APT%20B321-Photo-21.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/550%20Ortega%20Ave%20APT%20B321%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/550%20Ortega%20Ave%20APT%20B321-Photo-22.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/550%20Ortega%20Ave%20APT%20B321%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/550%20Ortega%20Ave%20APT%20B321-Photo-3.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/550%20Ortega%20Ave%20APT%20B321%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/550%20Ortega%20Ave%20APT%20B321-Photo-30.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/550%20Ortega%20Ave%20APT%20B321%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/550%20Ortega%20Ave%20APT%20B321-Photo-31.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/550%20Ortega%20Ave%20APT%20B321%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/550%20Ortega%20Ave%20APT%20B321-Photo-4.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/550%20Ortega%20Ave%20APT%20B321%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/550%20Ortega%20Ave%20APT%20B321-Photo-5.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/550%20Ortega%20Ave%20APT%20B321%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/550%20Ortega%20Ave%20APT%20B321-Photo-6.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/550%20Ortega%20Ave%20APT%20B321%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/550%20Ortega%20Ave%20APT%20B321-Photo-7.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/550%20Ortega%20Ave%20APT%20B321%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/550%20Ortega%20Ave%20APT%20B321-Photo-8.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/550%20Ortega%20Ave%20APT%20B321%2C%20Mountain%20View%2C%20CA%2094040%2C%20USA/550%20Ortega%20Ave%20APT%20B321-Photo-9.webp" alt="" />
-    </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="685-riviera-dr"
-         data-title="Large Home &bull; Los Altos"
-         data-category="large-homes">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-10.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-13.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-14.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-15.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-16.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-17.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-18.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-19.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-20.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-21.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-22.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-23.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-24.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-25.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-26.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-27.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-28.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-38.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-39.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-4.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-5.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-6.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-7.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-8.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/685%20Riviera%20Dr%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/685%20Riviera%20Dr-9.webp" alt="" />
-    </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="756-encina-grande-dr"
-         data-title="Large Home &bull; Palo Alto"
-         data-category="large-homes">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/756%20Encina%20Grande%20Dr%2C%20Palo%20Alto%2C%20CA%2094306%2C%20USA/756%20Encina%20Grande%20Dr-Photo-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/756%20Encina%20Grande%20Dr%2C%20Palo%20Alto%2C%20CA%2094306%2C%20USA/756%20Encina%20Grande%20Dr-Photo-10.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/756%20Encina%20Grande%20Dr%2C%20Palo%20Alto%2C%20CA%2094306%2C%20USA/756%20Encina%20Grande%20Dr-Photo-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/756%20Encina%20Grande%20Dr%2C%20Palo%20Alto%2C%20CA%2094306%2C%20USA/756%20Encina%20Grande%20Dr-Photo-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/756%20Encina%20Grande%20Dr%2C%20Palo%20Alto%2C%20CA%2094306%2C%20USA/756%20Encina%20Grande%20Dr-Photo-13.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/756%20Encina%20Grande%20Dr%2C%20Palo%20Alto%2C%20CA%2094306%2C%20USA/756%20Encina%20Grande%20Dr-Photo-14.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/756%20Encina%20Grande%20Dr%2C%20Palo%20Alto%2C%20CA%2094306%2C%20USA/756%20Encina%20Grande%20Dr-Photo-15.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/756%20Encina%20Grande%20Dr%2C%20Palo%20Alto%2C%20CA%2094306%2C%20USA/756%20Encina%20Grande%20Dr-Photo-16.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/756%20Encina%20Grande%20Dr%2C%20Palo%20Alto%2C%20CA%2094306%2C%20USA/756%20Encina%20Grande%20Dr-Photo-17.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/756%20Encina%20Grande%20Dr%2C%20Palo%20Alto%2C%20CA%2094306%2C%20USA/756%20Encina%20Grande%20Dr-Photo-18.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/756%20Encina%20Grande%20Dr%2C%20Palo%20Alto%2C%20CA%2094306%2C%20USA/756%20Encina%20Grande%20Dr-Photo-19.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/756%20Encina%20Grande%20Dr%2C%20Palo%20Alto%2C%20CA%2094306%2C%20USA/756%20Encina%20Grande%20Dr-Photo-20.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/756%20Encina%20Grande%20Dr%2C%20Palo%20Alto%2C%20CA%2094306%2C%20USA/756%20Encina%20Grande%20Dr-Photo-21.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/756%20Encina%20Grande%20Dr%2C%20Palo%20Alto%2C%20CA%2094306%2C%20USA/756%20Encina%20Grande%20Dr-Photo-23.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/756%20Encina%20Grande%20Dr%2C%20Palo%20Alto%2C%20CA%2094306%2C%20USA/756%20Encina%20Grande%20Dr-Photo-24.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/756%20Encina%20Grande%20Dr%2C%20Palo%20Alto%2C%20CA%2094306%2C%20USA/756%20Encina%20Grande%20Dr-Photo-25.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/756%20Encina%20Grande%20Dr%2C%20Palo%20Alto%2C%20CA%2094306%2C%20USA/756%20Encina%20Grande%20Dr-Photo-26.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/756%20Encina%20Grande%20Dr%2C%20Palo%20Alto%2C%20CA%2094306%2C%20USA/756%20Encina%20Grande%20Dr-Photo-4.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/756%20Encina%20Grande%20Dr%2C%20Palo%20Alto%2C%20CA%2094306%2C%20USA/756%20Encina%20Grande%20Dr-Photo-5.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/756%20Encina%20Grande%20Dr%2C%20Palo%20Alto%2C%20CA%2094306%2C%20USA/756%20Encina%20Grande%20Dr-Photo-6.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/756%20Encina%20Grande%20Dr%2C%20Palo%20Alto%2C%20CA%2094306%2C%20USA/756%20Encina%20Grande%20Dr-Photo-7.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/756%20Encina%20Grande%20Dr%2C%20Palo%20Alto%2C%20CA%2094306%2C%20USA/756%20Encina%20Grande%20Dr-Photo-8.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/756%20Encina%20Grande%20Dr%2C%20Palo%20Alto%2C%20CA%2094306%2C%20USA/756%20Encina%20Grande%20Dr-Photo-9.webp" alt="" />
-    </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="781-covington-rd"
-         data-title="Large Home &bull; Los Altos"
-         data-category="large-homes">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-10.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-13.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-14.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-15.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-16.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-17.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-18.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-19.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-2.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-20.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-21.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-22.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-23.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-24.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-25.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-26.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-3.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-32.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-33.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-34.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-35.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-36.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-37.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-38.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-39.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-4.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-40.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-41.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-42.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-43.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-44.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-45.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-46.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-5.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-6.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-7.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-8.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/781%20Covington%20Rd%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/781%20Covington%20Rd-Photo-9.webp" alt="" />
-    </div>
 
     <div class="ig-gallery__listing" data-ig-listing
          data-id="796-gailen-ave"
@@ -1986,83 +1102,7 @@
       <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/796%20Gailen%20Ave%2C%20Palo%20Alto%2C%20CA%2094303%2C%20USA/796%20Gailen%20Ave-7.webp" alt="" />
     </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="8001-marcelli-cir"
-         data-title="Large Home &bull; Los Altos"
-         data-category="large-homes">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-1.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-10.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-13.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-14.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-15.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-16.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-17.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-18.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-19.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-2.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-20.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-21.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-22.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-23.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-24.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-25.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-26.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-27.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-28.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-3.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-30.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-31.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-32.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-34.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-35.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-36.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-37.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-38.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-39.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-4.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-5.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-6.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-7.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-8.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/8001%20Marcelli%20Cir%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/8001%20Marcelli%20Cir%20-%20Photos-9.webp" alt="" />
-    </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="833-dixon-way"
-         data-title="Large Home &bull; Los Altos"
-         data-category="large-homes">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-10.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-13.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-14.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-15.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-17.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-18.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-19.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-2.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-20.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-21.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-22.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-23.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-24.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-26.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-27.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-28.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-3.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-4.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-5.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-6.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-7.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-8.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/833%20Dixon%20Way%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/833%20Dixon%20Way-9.webp" alt="" />
-    </div>
 
     <div class="ig-gallery__listing" data-ig-listing
          data-id="847-lakeshore-dr"
@@ -2104,116 +1144,8 @@
       <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/847%20Lakeshore%20Dr.%2C%20Redwood%20City%2C%20CA%2094065%2C%20USA/847%20Lakeshore%20Dr-9.webp" alt="" />
     </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="860-donohoe-st"
-         data-title="Single Family &bull; East Palo Alto"
-         data-category="single-family">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-10.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-13.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-14.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-15.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-16.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-17.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-18.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-19.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-20.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-21.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-22.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-23.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-24.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-25.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-26.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-27.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-28.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-30.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-31.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-32.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-33.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-34.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-35.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-42.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-43.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-6.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-7.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-8.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/860%20Donohoe%20St%2C%20East%20Palo%20Alto%2C%20CA%2094303%2C%20USA/860%20Donohoe%20St-9.webp" alt="" />
-    </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="878-wharfside-rd"
-         data-title="Single Family &bull; San Mateo"
-         data-category="single-family">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-10.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-13.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-14.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-15.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-16.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-17.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-18.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-19.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-2.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-21.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-22.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-23.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-24.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-25.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-26.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-27.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-28.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-3.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-38.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-4.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-5.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-6.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-7.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-8.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/878%20Wharfside%20Rd%2C%20San%20Mateo%2C%20CA%2094404%2C%20USA/878%20Wharfside%20Rd-Photo-9.webp" alt="" />
-    </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="889-n-san-antonio-rd-2020"
-         data-title="Condo &bull; Los Altos"
-         data-category="condo">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-16.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-10.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-15.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-16.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-17.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-18.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-19.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-20.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-21.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-22.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-23.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-24.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-25.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-26.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-27.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-28.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-29.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-30.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-31.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-32.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-33.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-34.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-37.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-38.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-39.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-4.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-41.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-42.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-43.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-5.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-7.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/889%20N%20San%20Antonio%20Rd%20%232020%2C%20Los%20Altos%2C%20CA%2094022%2C%20USA/889%20N%20San%20Antonio%20Rd%20%232020-9.webp" alt="" />
-    </div>
 
     <div class="ig-gallery__listing" data-ig-listing
          data-id="921-sherwood-ave"
@@ -2292,23 +1224,6 @@
       <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/943%20Loraine%20Ave%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/943%20Loraine%20Ave-9.webp" alt="" />
     </div>
 
-    <div class="ig-gallery__listing" data-ig-listing
-         data-id="979-stanley-ave"
-         data-title="Large Home &bull; Los Altos"
-         data-category="large-homes">
-      <img data-ig-cover src="https://estateflowdigital.github.io/dahl-portfolio-photos/979%20Stanley%20Ave%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/979%20Stanley%20Ave-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/979%20Stanley%20Ave%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/979%20Stanley%20Ave-10.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/979%20Stanley%20Ave%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/979%20Stanley%20Ave-11.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/979%20Stanley%20Ave%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/979%20Stanley%20Ave-12.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/979%20Stanley%20Ave%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/979%20Stanley%20Ave-13.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/979%20Stanley%20Ave%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/979%20Stanley%20Ave-3.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/979%20Stanley%20Ave%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/979%20Stanley%20Ave-4.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/979%20Stanley%20Ave%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/979%20Stanley%20Ave-5.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/979%20Stanley%20Ave%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/979%20Stanley%20Ave-6.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/979%20Stanley%20Ave%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/979%20Stanley%20Ave-7.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/979%20Stanley%20Ave%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/979%20Stanley%20Ave-8.webp" alt="" />
-      <img data-ig-photo src="https://estateflowdigital.github.io/dahl-portfolio-photos/979%20Stanley%20Ave%2C%20Los%20Altos%2C%20CA%2094024%2C%20USA/979%20Stanley%20Ave-9.webp" alt="" />
-    </div>
 
 
   </div>
@@ -2341,18 +1256,6 @@
     </div>
   </div>
 
-  <!-- Review mode floating bar -->
-  <div class="ig-gallery__review-bar" data-ig-review-bar>
-    <span class="ig-gallery__review-bar-count" data-ig-review-count></span>
-    <button class="ig-gallery__review-bar-copy" type="button" data-ig-review-copy>
-      <svg viewBox="0 0 16 16"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg>
-      Copy to Clipboard
-    </button>
-    <button class="ig-gallery__review-bar-clear" type="button" data-ig-review-clear>Clear All</button>
-  </div>
-
-  <!-- Toast notification -->
-  <div class="ig-gallery__toast" data-ig-toast></div>
 
 </section>
 
@@ -2395,13 +1298,6 @@
     };
   });
 
-  /* ── Review mode DOM refs ─────────────── */
-  var reviewBar   = $('[data-ig-review-bar]', gallery);
-  var reviewCount = $('[data-ig-review-count]', gallery);
-  var reviewCopy  = $('[data-ig-review-copy]', gallery);
-  var reviewClear = $('[data-ig-review-clear]', gallery);
-  var toast       = $('[data-ig-toast]', gallery);
-
   /* ── State ─────────────────────────────── */
   var activeTab    = 'all';
   var view         = 'grid';       // 'grid' | 'detail'
@@ -2410,8 +1306,6 @@
   var lbOpen       = false;
   var lbPhotos     = [];
   var lbIndex      = 0;
-  var reviewMode   = false;
-  var selected     = {};           // key: "propId:photoIdx" → { propNum, photoNum, filename, title }
 
   /* ── Card factory ──────────────────────── */
   function makeCard(opts) {
@@ -2463,30 +1357,6 @@
       btn.appendChild(labelWrap);
     }
 
-    // Review mode: number badge
-    if (opts.number !== undefined) {
-      var numEl = document.createElement('div');
-      numEl.className = 'ig-gallery__card-number';
-      numEl.textContent = opts.number;
-      btn.appendChild(numEl);
-    }
-
-    // Review mode: checkbox
-    if (opts.selectable) {
-      var check = document.createElement('div');
-      check.className = 'ig-gallery__card-check';
-      check.innerHTML = '<svg viewBox="0 0 16 16"><path d="M3.5 8.5L6.5 11.5L12.5 4.5"/></svg>';
-      check.addEventListener('click', function (e) {
-        e.stopPropagation();
-        toggleSelect(opts.selectKey, opts.selectMeta, btn);
-      });
-      btn.appendChild(check);
-      // Restore selected state if already selected
-      if (selected[opts.selectKey]) {
-        btn.classList.add('ig-gallery__card--selected');
-      }
-    }
-
     btn.addEventListener('click', opts.onClick);
     return btn;
   }
@@ -2509,12 +1379,6 @@
         ariaLabel: listing.title,
         onClick:   (function (l, n) { return function () { enterDetail(l, n); }; })(listing, num)
       };
-      if (reviewMode) {
-        cardOpts.number = num;
-        cardOpts.selectable = true;
-        cardOpts.selectKey = listing.id + ':cover';
-        cardOpts.selectMeta = { propId: listing.id, propNum: num, photoIndex: -1, photoNum: String(num), filename: '', title: listing.title, isProperty: true };
-      }
       grid.appendChild(makeCard(cardOpts));
     });
   }
@@ -2525,19 +1389,12 @@
     if (!curListing) return;
 
     curListing.photos.forEach(function (src, i) {
-      var photoNum = curPropNum + '.' + (i + 1);
       var cardOpts = {
         src:       src,
         icon:      'expand',
         ariaLabel: curListing.title + ' \u2013 Photo ' + (i + 1),
         onClick:   function () { openLightbox(i); }
       };
-      if (reviewMode) {
-        cardOpts.number = photoNum;
-        cardOpts.selectable = true;
-        cardOpts.selectKey = curListing.id + ':' + i;
-        cardOpts.selectMeta = { propId: curListing.id, propNum: curPropNum, photoIndex: i, photoNum: photoNum, filename: getFilename(src), title: curListing.title, isProperty: false };
-      }
       grid.appendChild(makeCard(cardOpts));
     });
   }
@@ -2547,7 +1404,7 @@
     curListing = listing;
     curPropNum = propNum || 0;
     crumb.hidden = false;
-    crumbTitle.innerHTML = (reviewMode && curPropNum ? '#' + curPropNum + ' — ' : '') + listing.title;
+    crumbTitle.innerHTML = listing.title;
     crumbMeta.textContent = listing.photos.length + ' photo' + (listing.photos.length !== 1 ? 's' : '');
     tabsNav.hidden = true;
     gallery.classList.add('ig-gallery--detail');
@@ -2562,104 +1419,6 @@
     tabsNav.hidden = false;
     gallery.classList.remove('ig-gallery--detail');
     renderGrid();
-  }
-
-  /* ── Review mode ─────────────────────────── */
-  function getFilename(url) {
-    return url.split('/').pop().split('?')[0] || url;
-  }
-
-  function toggleReview() {
-    reviewMode = !reviewMode;
-    gallery.classList.toggle('ig-gallery--review', reviewMode);
-    if (!reviewMode) {
-      selected = {};
-      updateReviewBar();
-    }
-    // Re-render current view
-    if (view === 'detail') renderDetail();
-    else renderGrid();
-  }
-
-  function toggleSelect(key, meta, cardEl) {
-    if (selected[key]) {
-      delete selected[key];
-      cardEl.classList.remove('ig-gallery__card--selected');
-    } else {
-      selected[key] = meta;
-      cardEl.classList.add('ig-gallery__card--selected');
-    }
-    updateReviewBar();
-  }
-
-  function updateReviewBar() {
-    var count = Object.keys(selected).length;
-    if (count > 0 && reviewMode) {
-      reviewBar.classList.add('ig-gallery__review-bar--visible');
-      reviewCount.innerHTML = '<strong>' + count + '</strong> item' + (count !== 1 ? 's' : '') + ' selected';
-    } else {
-      reviewBar.classList.remove('ig-gallery__review-bar--visible');
-    }
-  }
-
-  function copySelection() {
-    var keys = Object.keys(selected);
-    if (!keys.length) return;
-
-    // Group by property
-    var groups = {};
-    keys.forEach(function (k) {
-      var meta = selected[k];
-      var gk = meta.propId;
-      if (!groups[gk]) {
-        groups[gk] = { propNum: meta.propNum, title: meta.title, photos: [], isWholeProperty: false };
-      }
-      if (meta.isProperty) {
-        groups[gk].isWholeProperty = true;
-      } else {
-        groups[gk].photos.push(meta);
-      }
-    });
-
-    // Sort groups by propNum
-    var sortedGroups = Object.keys(groups).map(function (k) { return groups[k]; })
-      .sort(function (a, b) { return a.propNum - b.propNum; });
-
-    // Build text
-    var lines = [];
-    sortedGroups.forEach(function (g) {
-      lines.push('#' + g.propNum + '  ' + g.title);
-      if (g.isWholeProperty && g.photos.length === 0) {
-        lines.push('    (entire property)');
-      }
-      // Sort photos by index
-      g.photos.sort(function (a, b) { return a.photoIndex - b.photoIndex; });
-      g.photos.forEach(function (p) {
-        lines.push('    ' + p.photoNum + '  — ' + p.filename);
-      });
-    });
-
-    var text = lines.join('\n');
-    navigator.clipboard.writeText(text).then(function () {
-      showToast('Copied ' + keys.length + ' item' + (keys.length !== 1 ? 's' : '') + ' to clipboard');
-    }, function () {
-      showToast('Copy failed — try again');
-    });
-  }
-
-  function clearSelection() {
-    selected = {};
-    updateReviewBar();
-    if (view === 'detail') renderDetail();
-    else renderGrid();
-  }
-
-  function showToast(msg) {
-    toast.textContent = msg;
-    toast.classList.add('ig-gallery__toast--show');
-    setTimeout(function () {
-      toast.classList.remove('ig-gallery__toast--show');
-    }, 2200);
   }
 
   /* ── Lightbox ──────────────────────────── */
@@ -2735,12 +1494,6 @@
   // Wire up the detail header back button
   var crumbBack = $('[data-ig-crumb-back]', gallery);
   if (crumbBack) crumbBack.addEventListener('click', exitDetail);
-
-  // Review mode controls
-  var reviewToggle = $('[data-ig-review-toggle]', gallery);
-  if (reviewToggle) reviewToggle.addEventListener('click', toggleReview);
-  if (reviewCopy) reviewCopy.addEventListener('click', copySelection);
-  if (reviewClear) reviewClear.addEventListener('click', clearSelection);
 
   tabBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
